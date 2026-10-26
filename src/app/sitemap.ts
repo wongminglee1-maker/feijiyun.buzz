@@ -3,6 +3,8 @@ import { siteConfig } from "@/config/site";
 import { articlesData } from "@/config/articles";
 import { devicesData } from "@/config/devices";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.baseUrl;
 
