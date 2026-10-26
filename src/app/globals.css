@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+:root {
+  --bg-main: #F7F7F5;
+  --text-primary: #17191D;
+  --text-muted: #868C96;
+  --accent-blue: #3457D5;
+  --border-silver: #D7D9D6;
+  --surface-white: #FFFFFF;
+  --surface-subtle: #F0F0EE;
+}
+
+@theme {
+  --color-main: var(--bg-main);
+  --color-graphite: var(--text-primary);
+  --color-mist: var(--text-muted);
+  --color-restrained-blue: var(--accent-blue);
+  --color-silver: var(--border-silver);
+  --color-surface: var(--surface-white);
+  --color-subtle: var(--surface-subtle);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Inter", "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  line-height: 1.75;
+}
+
+/* Modular Scroll Snap for Home Page */
+@media (min-width: 1024px) {
+  .snap-container {
+    scroll-snap-type: y proximity;
+    overflow-y: auto;
+    height: 100vh;
+    scroll-behavior: smooth;
+  }
+  
+  .snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+}
+
+@media (max-width: 1023px) {
+  .snap-container {
+    scroll-snap-type: none;
+    overflow-y: visible;
+    height: auto;
+  }
+  
+  .snap-section {
+    scroll-snap-align: none;
+  }
+}
+
+/* Subtle fade in animations (max 20px translation, 300-500ms) */
+@keyframes subtleFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: subtleFadeUp 450ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hairline dividers */
+.hairline-b {
+  border-bottom: 1px solid var(--border-silver);
+}
+.hairline-t {
+  border-top: 1px solid var(--border-silver);
+}
+.hairline-r {
+  border-right: 1px solid var(--border-silver);
+}
+.hairline-l {
+  border-left: 1px solid var(--border-silver);
+}
+
+/* Selection */
+::selection {
+  background-color: #3457D5;
+  color: #FFFFFF;
+}
